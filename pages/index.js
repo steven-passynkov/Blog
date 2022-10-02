@@ -46,9 +46,8 @@ export default function Home() {
     selectArtical();
   }, []);
 
-  return (
-    <>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+  return (<>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container fluid>
           <Navbar.Brand href="/">Stevens Blog</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -61,7 +60,7 @@ export default function Home() {
         </Container>
       </Navbar>
 
-      <Desktop>
+     
         <div style={{ paddingTop: "15%", height: "calc(100vh)" }}>
           <Container>
             <Row>
@@ -71,9 +70,7 @@ export default function Home() {
             </Row>
             <Row>
               <Col>
-                <h4>
-                  The subscibe is still in development 
-                </h4>
+                <h4>The subscibe is still in development</h4>
               </Col>
               <Col></Col>
             </Row>
@@ -94,41 +91,9 @@ export default function Home() {
             </Row>
           </Container>
         </div>
-      </Desktop>
-
-      <Mobile>
-        <div style={{ paddingTop: "15%", height: "calc(100vh)" }}>
-          <Container>
-            <Row>
-              <Col>
-                <h1>Subscibe to my blog</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <h4>
-                  The subscibe is still in development 
-                </h4>
-              </Col>
-            </Row>
-            <Row style={{ paddingTop: "1%" }}>
-              <Col>
-                <InputGroup>
-                  <Form.Control
-                    placeholder="Your email adress"
-                    aria-label="Your email adress"
-                    aria-describedby="basic-addon2"
-                  />
-                  <Button variant="outline-secondary" id="button-addon2">
-                    Subscibe
-                  </Button>
-                </InputGroup>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      </Mobile>
-      {articalData !== undefined ? (
+      
+   
+        {articalData !== undefined ? (
         <>
           <Desktop>
             <div id="articals">
@@ -146,7 +111,7 @@ export default function Home() {
                   <Container>
                     <Row>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -161,7 +126,7 @@ export default function Home() {
                         </Card>
                       </Col>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -197,7 +162,7 @@ export default function Home() {
                   <Container>
                     <Row>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -212,7 +177,7 @@ export default function Home() {
                         </Card>
                       </Col>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -227,7 +192,7 @@ export default function Home() {
                         </Card>
                       </Col>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -264,7 +229,7 @@ export default function Home() {
                   <Container>
                     <Row>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -285,7 +250,7 @@ export default function Home() {
                   <Container>
                     <Row>
                       <Col>
-                      <Card>
+                        <Card>
                           <Card.Img variant="top"></Card.Img>
                           <Card.Body>
                             <Card.Title>{articalData[0].title}</Card.Title>
@@ -323,9 +288,295 @@ export default function Home() {
                   <Card>
                     <Card.Body>
                       <Card.Title>Hi, my name is Steven.</Card.Title>
-                      <Card.Text>
-                        I am 15 year old.
-                      </Card.Text>
+                      <Card.Text>I am 15 year old.</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+  </>)
+
+  /*
+  original code. Desktop causes SSR error. TODO investigate asap!
+  return (
+    <>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container fluid>
+          <Navbar.Brand href="/">Stevens Blog</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#articals">Articals</Nav.Link>
+              <Nav.Link href="#me">About me</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      <Desktop>
+        <div style={{ paddingTop: "15%", height: "calc(100vh)" }}>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Subscibe to my blog</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h4>The subscibe is still in development</h4>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row style={{ paddingTop: "1%" }}>
+              <Col>
+                <InputGroup>
+                  <Form.Control
+                    placeholder="Your email adress"
+                    aria-label="Your email adress"
+                    aria-describedby="basic-addon2"
+                  />
+                  <Button variant="outline-secondary" id="button-addon2">
+                    Subscibe
+                  </Button>
+                </InputGroup>
+              </Col>
+              <Col></Col>
+            </Row>
+          </Container>
+        </div>
+      </Desktop>
+
+      <Mobile>
+        <div style={{ paddingTop: "15%", height: "calc(100vh)" }}>
+          <Container>
+            <Row>
+              <Col>
+                <h1>Subscibe to my blog</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <h4>The subscibe is still in development</h4>
+              </Col>
+            </Row>
+            <Row style={{ paddingTop: "1%" }}>
+              <Col>
+                <InputGroup>
+                  <Form.Control
+                    placeholder="Your email adress"
+                    aria-label="Your email adress"
+                    aria-describedby="basic-addon2"
+                  />
+                  <Button variant="outline-secondary" id="button-addon2">
+                    Subscibe
+                  </Button>
+                </InputGroup>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </Mobile>
+      {articalData !== undefined ? (
+        <>
+          <Desktop>
+            <div id="articals">
+              <Row>
+                <Col>
+                  <center>
+                    <u>
+                      <h2>My Articals</h2>
+                    </u>
+                  </center>
+                </Col>
+              </Row>
+              <Carousel variant="dark" style={{ paddingTop: "1%" }}>
+                <Carousel.Item>
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Carousel.Item>
+              </Carousel>
+            </div>
+          </Desktop>
+
+          <Mobile>
+            <div style={{ marginTop: "10%" }}>
+              <Row>
+                <Col>
+                  <center>
+                    <u>
+                      <h2>My Articals</h2>
+                    </u>
+                  </center>
+                </Col>
+              </Row>
+              <Carousel variant="dark" style={{ paddingTop: "1%" }}>
+                <Carousel.Item>
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Container>
+                    <Row>
+                      <Col>
+                        <Card>
+                          <Card.Img variant="top"></Card.Img>
+                          <Card.Body>
+                            <Card.Title>{articalData[0].title}</Card.Title>
+                            <Card.Text>An artical about my school</Card.Text>
+                            <Button
+                              variant="primary"
+                              href={"/article/" + `${articalData[0].url}`}
+                            >
+                              Go to the artical
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Carousel.Item>
+              </Carousel>
+            </div>
+          </Mobile>
+
+          <div id="me" style={{ marginTop: "10%", marginBottom: "10%" }}>
+            <Container>
+              <Row>
+                <Col>
+                  <center>
+                    <u>
+                      <h2>About me</h2>
+                    </u>
+                  </center>
+                </Col>
+              </Row>
+              <Row style={{ paddingTop: "1%" }}>
+                <Col>image of me</Col>
+                <Col>
+                  <Card>
+                    <Card.Body>
+                      <Card.Title>Hi, my name is Steven.</Card.Title>
+                      <Card.Text>I am 15 year old.</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -337,5 +588,5 @@ export default function Home() {
         <></>
       )}
     </>
-  );
+  );*/
 }

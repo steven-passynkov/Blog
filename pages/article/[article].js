@@ -73,8 +73,8 @@ export default function Artical() {
             </Row>
             <hr />
             <div style={{ paddingTop: "2%", paddingBottom: "10%" }}>
-              {articalData.text.text.map((text) => (
-                <Row style={{ paddingTop: "1%" }}>
+              {articalData.text.text.map((text, index) => (
+                <Row key={index} style={{ paddingTop: "1%" }}>
                   <Col>{text}</Col>
                 </Row>
               ))}

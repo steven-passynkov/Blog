@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Error from "next/error";
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 import { supabase } from "../../utils/supabaseClient";
@@ -8,10 +9,15 @@ export default function Artical() {
   const router = useRouter();
   const { article } = router.query;
   const [articalData, setArticalData] = useState();
+  const [loading, setLoading] = useState(true);
 
   const selectArtical = async () => {
-    let { data, error } = await supabase.from("articals").select();
+    let { data, error } = await supabase
+      .from("articals")
+      .select()
+      .eq("url", article);
     setArticalData(data.find((el) => el.url === article));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -19,8 +25,6 @@ export default function Artical() {
       selectArtical();
     }
   }, [article]);
-
-  console.log(articalData);
 
   return (
     <>
@@ -70,7 +74,7 @@ export default function Artical() {
             <hr />
             <div style={{ paddingTop: "2%", paddingBottom: "10%" }}>
               {articalData.text.text.map((text) => (
-                <Row style={{paddingTop:"1%"}}>
+                <Row style={{ paddingTop: "1%" }}>
                   <Col>{text}</Col>
                 </Row>
               ))}
@@ -78,7 +82,15 @@ export default function Artical() {
           </Container>
         </div>
       ) : (
-        <></>
+        <>
+          {loading === false ? (
+            <>
+              <Error statusCode={404} />
+            </>
+          ) : (
+            <></>
+          )}
+        </>
       )}
     </>
   );
